@@ -27,6 +27,11 @@ v0.3.1 #Hot Fix
 + Fix "choise" str bug
 + Fix choise bug (rp install only first client)
 
+v0.3.2 #Hot Fix
++ Fix install bug
++ Add window for choise rp
+
 v0.4 - Beta(Not Relise)
 + Optimize install func
 + Add wiev where installed
++ Add choise file window

@@ -2,10 +2,13 @@ import os, shutil, sys
 import ctypes
 from colorama import init, Fore
 from os import path
+from tkinter import *
+from tkinter import ttk
+from tkinter import filedialog
 
 init(autoreset=True)
 
-version="Auto Rp Install v0.3"
+version="Auto Rp Install v0.3.2"
 
 ctypes.windll.kernel32.SetConsoleTitleW(version)
 
@@ -36,9 +39,9 @@ for i in (f_change):
 
 def get_rp_name(rp_path):
     while True:
-        n=rp_path.find('\\')
-        rp_path=rp_path[n+1:]
-        if "\\" not in rp_path:
+        n=rp_path.find('//')
+        rp_path=rp_path[n+2:]
+        if "//" not in rp_path:
             break
     return rp_path
 
@@ -64,8 +67,9 @@ def print_installed(installed):
     
 print("\n"+"wild = 1 | akrien beta = 2 | akrien premium = 3 | celka = 4 | deadcode = 5 | nurik_next = 6")
 choise=input("Выбери в какие читы устанавливаються рп(пример: 1245): ")
-rp_path=input("\n"+"Путь до рп: ")
-
+print("\n"+"Выбретие рп, в открывщемся окне!")
+rp_path=filedialog.askopenfilename().replace("/", "//")
+print("\n"+ "Путь до рп:" + rp_path)
 
 if path.exists(rp_path):
     rp_name=get_rp_name(rp_path)
@@ -81,7 +85,7 @@ if path.exists(rp_path):
 ### делаю вывод через отдельную переменную, а не сразу при установке, для того чито бы оно не засоряло консоль(что бы оно не пролетало во время установки, 
 # а сразу устанавливало), 
 # и было удобно смотреть где рп повторен, где установлен и т.д.
-    installed=str
+    installed=""
     if zip_or_not(rp_name) == False:
         if '1' in choise:
             if not path.exists(wild+rp_name):
